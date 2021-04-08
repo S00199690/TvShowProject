@@ -47,25 +47,30 @@ namespace TvShowProject
             lbxShows.ItemsSource = allShows;
         }
 
-        private void btnNew_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void lbxShows_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Show selectedShow = lbxShows.SelectedItem as Show;
 
             if(selectedShow != null)
             {
-                tbkTitle.Text = selectedShow.Title;
-                tbkSeasons.Text = selectedShow.Seasons.ToString();
-                tbkEpisodes.Text = selectedShow.Episodes.ToString();
-                tbkYearStarted.Text = selectedShow.YearStart.ToString();
-                tbkYearEnded.Text = selectedShow.YearEnd.ToString();
-                tbkDescription.Text = selectedShow.Description;
+                tbxTitle.Text = selectedShow.Title;
+                tbxSeasons.Text = selectedShow.Seasons.ToString();
+                tbxEpisodes.Text = selectedShow.Episodes.ToString();
+                tbxYearStart.Text = selectedShow.YearStart.ToString();
+                tbxYearEnd.Text = selectedShow.YearEnd.ToString();
+                tbxDescription.Text = selectedShow.Description;
                 
             }
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            tbxTitle.Clear();
+            tbxSeasons.Clear();
+            tbxEpisodes.Clear();
+            tbxYearStart.Clear();
+            tbxYearEnd.Clear();
+            tbxDescription.Clear();
         }
     }
 }

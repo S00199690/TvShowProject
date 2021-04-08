@@ -19,18 +19,23 @@
         <Label x:Name="lblSeasons" Content="Seasons" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,135,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblEpisodes" Content="Episodes" Grid.Column="1" HorizontalAlignment="Left" Margin="530.4,135,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblYrStart" Content="Year Started" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,188,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblYrEnded" Content="Year Ended" Grid.Column="1" HorizontalAlignment="Left" Margin="530.4,188,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblYrEnded" Content="Year Ended" Grid.Column="1" HorizontalAlignment="Left" Margin="533.4,188,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.552,0.836"/>
         <Label x:Name="lblDescription" Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,230,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.234,-0.242"/>
-        <Button x:Name="btnUpdate" Content="Update" Grid.Column="1" HorizontalAlignment="Left" Margin="396.4,347,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnNew" Content="New" Grid.Column="1" HorizontalAlignment="Left" Margin="511.4,347,0,0" VerticalAlignment="Top" Width="75" Click="btnNew_Click"/>
-        <Button x:Name="btnDelete" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="632.4,347,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnRandom" Content="Random" Grid.Column="1" HorizontalAlignment="Left" Margin="511.4,382,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBlock x:Name="tbkDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="506.4,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="82" Width="196"/>
-        <TextBlock x:Name="tbkTitle" Grid.Column="1" HorizontalAlignment="Left" Margin="423.4,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="btnUpdate" Content="Update" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,98,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.752,-1.969"/>
+        <Button x:Name="btnAdd" Content="Add" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,135,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnDelete" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,173,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnRandom" Content="Random" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,256,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBlock x:Name="tbkSeasons" Grid.Column="1" HorizontalAlignment="Left" Margin="443.4,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="tbkEpisodes" Grid.Column="1" HorizontalAlignment="Left" Margin="591.4,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="tbkYearStarted" Grid.Column="1" HorizontalAlignment="Left" Margin="465.4,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="tbkYearEnded" Grid.Column="1" HorizontalAlignment="Left" Margin="604.4,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.308,0.439"/>
+        <TextBox x:Name="tbxTitle" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="423.4,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
+        <TextBox x:Name="tbxSeasons" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="448.4,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+        <TextBox x:Name="tbxEpisodes" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="591.4,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+        <TextBox x:Name="tbxYearStart" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="460.4,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+        <TextBox x:Name="tbxYearEnd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="604.4,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+        <TextBox x:Name="tbxDescription" Grid.Column="1" HorizontalAlignment="Left" Height="72" Margin="465.4,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="251"/>
+        <Button x:Name="btnClear" Content="Clear" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,215,0,0" VerticalAlignment="Top" Width="75" Click="btnClear_Click"/>
 
     </Grid>
 </Window>
