@@ -6,12 +6,29 @@
         xmlns:local="clr-namespace:TvShowProject"
         mc:Ignorable="d"
         Title="TV Shows" Height="450" Width="800" Loaded="winTvShows_Loaded">
+    <Window.Resources>
+        <DataTemplate x:Key="listboxTemplate">
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+
+                <Image Source="{Binding ShowImage}" Width="75" Height="75"/>
+
+                <StackPanel>
+                    <TextBlock Text="{Binding Title}" Margin="5" FontSize="12"/>
+                    <TextBlock Text="{Binding YearStart}" Margin="5" FontSize="12"/>
+                </StackPanel>
+                
+                
+            </StackPanel>
+            
+        </DataTemplate>
+    </Window.Resources>
     <Grid Margin="0,0,-6.4,-2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="21*"/>
             <ColumnDefinition Width="379*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="lbxShows" HorizontalAlignment="Left" Height="302" Margin="39,95,0,0" VerticalAlignment="Top" Width="215" Grid.ColumnSpan="2" SelectionChanged="lbxShows_SelectionChanged"/>
+        <ListBox x:Name="lbxShows" HorizontalAlignment="Left" Height="302" Margin="39,95,0,0" VerticalAlignment="Top" Width="215" Grid.ColumnSpan="2" ItemTemplate="{StaticResource listboxTemplate}" SelectionChanged="lbxShows_SelectionChanged" />
         <ComboBox HorizontalAlignment="Left" Margin="52,13,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <Label x:Name="lblGenre" Content="Genre" HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label x:Name="lblTvShows" Content="TV Shows" HorizontalAlignment="Left" Margin="39,69,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
