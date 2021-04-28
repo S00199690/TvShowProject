@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TvShowProject"
         mc:Ignorable="d"
-        Title="TV Shows" Height="450" Width="800" Loaded="winTvShows_Loaded">
+        Title="TV Shows" Height="500" Width="850" Loaded="winTvShows_Loaded">
     <Window.Resources>
         <DataTemplate x:Key="listboxTemplate">
 
@@ -17,57 +17,68 @@
                     <TextBlock Text="{Binding Title}" Margin="5" FontSize="12"/>
                     <TextBlock Text="{Binding YearStart}" Margin="5" FontSize="12"/>
                 </StackPanel>
-                
-                
+
+
             </StackPanel>
-            
+
         </DataTemplate>
     </Window.Resources>
     <Grid Margin="0,0,-6.4,-2">
         <TabControl TabStripPlacement="Top">
             <TabItem Header="Browse Shows" Width="200">
-            <Grid>
-                
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="21*"/>
-                    <ColumnDefinition Width="379*"/>
-                </Grid.ColumnDefinitions>
-            
-            <ListBox x:Name="lbxShows" HorizontalAlignment="Left" Height="302" Margin="39,95,0,0" VerticalAlignment="Top" Width="250" Grid.ColumnSpan="2" ItemTemplate="{StaticResource listboxTemplate}" SelectionChanged="lbxShows_SelectionChanged" />
-            <ComboBox HorizontalAlignment="Left" Margin="52,13,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <Label x:Name="lblGenre" Content="Genre" HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-            <Label x:Name="lblTvShows" Content="TV Shows" HorizontalAlignment="Left" Margin="39,69,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-            <Label x:Name="lblTitle" Content="Title" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.537,0.688"/>
-            <Label x:Name="lblSeasons" Content="Seasons" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,135,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="lblEpisodes" Content="Episodes" Grid.Column="1" HorizontalAlignment="Left" Margin="530.4,135,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="lblYrStart" Content="Year Started" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,188,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="lblYrEnded" Content="Year Ended" Grid.Column="1" HorizontalAlignment="Left" Margin="533.4,188,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.552,0.836"/>
-            <Label x:Name="lblDescription" Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,230,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.234,-0.242"/>
-            <Button x:Name="btnUpdate" Content="Update" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,98,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.752,-1.969"/>
-            <Button x:Name="btnAdd" Content="Add" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,135,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="btnDelete" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,173,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="btnRandom" Content="Random" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,256,0,0" VerticalAlignment="Top" Width="75"/>
-            <TextBlock x:Name="tbkSeasons" Grid.Column="1" HorizontalAlignment="Left" Margin="443.4,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBlock x:Name="tbkEpisodes" Grid.Column="1" HorizontalAlignment="Left" Margin="591.4,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBlock x:Name="tbkYearStarted" Grid.Column="1" HorizontalAlignment="Left" Margin="465.4,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBlock x:Name="tbkYearEnded" Grid.Column="1" HorizontalAlignment="Left" Margin="604.4,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.308,0.439"/>
-            <TextBox x:Name="tbxTitle" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="423.4,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
-            <TextBox x:Name="tbxSeasons" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="448.4,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
-            <TextBox x:Name="tbxEpisodes" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="591.4,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
-            <TextBox x:Name="tbxYearStart" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="460.4,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
-            <TextBox x:Name="tbxYearEnd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="604.4,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
-            <TextBox x:Name="tbxDescription" Grid.Column="1" HorizontalAlignment="Left" Height="118" Margin="465.4,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="251"/>
-            <Button x:Name="btnClear" Content="Clear" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,215,0,0" VerticalAlignment="Top" Width="75" Click="btnClear_Click"/>
-            </Grid>
-            </TabItem>
-            <TabItem Header="Create Show" Width="200">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition Height="5*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="21*"/>
+                        <ColumnDefinition Width="379*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox x:Name="lbxShows" HorizontalAlignment="Left" Height="302" Margin="39,95,0,0" VerticalAlignment="Top" Width="250" Grid.ColumnSpan="2" ItemTemplate="{StaticResource listboxTemplate}" SelectionChanged="lbxShows_SelectionChanged" />
+                    <ComboBox HorizontalAlignment="Left" Margin="52,13,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label x:Name="lblGenre" Content="Genre" HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lblTvShows" Content="TV Shows" HorizontalAlignment="Left" Margin="39,69,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lblTitle" Content="Title" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.537,0.688"/>
+                    <Label x:Name="lblSeasons" Content="Seasons" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,135,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblEpisodes" Content="Episodes" Grid.Column="1" HorizontalAlignment="Left" Margin="530.4,135,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblYrStart" Content="Year Started" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,188,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblYrEnded" Content="Year Ended" Grid.Column="1" HorizontalAlignment="Left" Margin="533.4,188,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.552,0.836"/>
+                    <Label x:Name="lblDescription" Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="386.4,230,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.234,-0.242"/>
+                    <Button x:Name="btnUpdate" Content="Update" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,98,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.752,-1.969"/>
+                    <Button x:Name="btnDelete" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,173,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
+                    <Button x:Name="btnRandom" Content="Random" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,256,0,0" VerticalAlignment="Top" Width="75"/>
+                    <TextBox x:Name="tbxTitle" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="423.4,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
+                    <TextBox x:Name="tbxSeasons" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="448.4,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+                    <TextBox x:Name="tbxEpisodes" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="591.4,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+                    <TextBox x:Name="tbxYearStart" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="460.4,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+                    <TextBox x:Name="tbxYearEnd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="604.4,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+                    <TextBox x:Name="tbxDescription" Grid.Column="1" HorizontalAlignment="Left" Height="118" Margin="465.4,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="251"/>
+                    <Button x:Name="btnClear" Content="Clear" Grid.Column="1" HorizontalAlignment="Left" Margin="261.4,215,0,0" VerticalAlignment="Top" Width="75" Click="btnClear_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Add Show" Width="200">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="190*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label x:Name="lblTitleCreate" Content="Title" HorizontalAlignment="Left" Margin="39,60,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lblSeasonsCreate" Content="Seasons" HorizontalAlignment="Left" Margin="39,110,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <Label x:Name="lblEpisodesCreate" Content="Episodes" HorizontalAlignment="Left" Margin="39,160,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <Label x:Name="lblYearStartCreate" Content="Year Start" HorizontalAlignment="Left" Margin="308.8,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.51,0.508" Grid.Column="2"/>
+                    <Label x:Name="lblYearEndCreate" Content="Year End" HorizontalAlignment="Left" Margin="308.8,113,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,0.508" Grid.Column="2"/>
+                    <Label x:Name="lblDescriptionCreate" Content="Description" HorizontalAlignment="Left" Margin="39,209,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+                    <Label x:Name="lblImageLink" Content="Image Link" HorizontalAlignment="Left" Margin="308.8,209,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <TextBox x:Name="tbxTitleCreate" Text="Enter Title" LostFocus="tbxTitleCreate_LostFocus" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="26.8,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsTabStop="False" GotFocus="tbxTitleCreate_GotFocus"/>
+                    <TextBox x:Name="tbxSeasonsCreate" Text="Enter Number Of Seasons" GotFocus="tbxSeasonsCreate_GotFocus" LostFocus="tbxSeasonsCreate_LostFocus" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="26.8,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsTabStop="False"/>
+                    <TextBox x:Name="tbxEpisodesCreate" Text="Enter Number Of Episodes" GotFocus="tbxEpisodesCreate_GotFocus" LostFocus="tbxEpisodesCreate_LostFocus" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="26.8,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsTabStop="False"/>
+                    <TextBox x:Name="tbxYearStartCreate" Text="Enter Year Started" GotFocus="tbxYearStartCreate_GotFocus" LostFocus="tbxYearStartCreate_LostFocus" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="382.8,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsTabStop="False"/>
+                    <TextBox x:Name="tbxYearEndCreate" Text="Enter Year Ended" GotFocus="tbxYearEndCreate_GotFocus" LostFocus="tbxYearEndCreate_LostFocus" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="382.8,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsTabStop="False"/>
+                    <TextBox x:Name="tbxDescriptionCreate" Text="Enter A Description" GotFocus="tbxDescriptionCreate_GotFocus" LostFocus="tbxDescriptionCreate_LostFocus" Grid.Column="2" HorizontalAlignment="Left" Height="124" Margin="26.8,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsTabStop="False"/>
+                    <TextBox x:Name="tbxImageLinkCreate" Text="Enter Link To Image" LostFocus="tbxImageLinkCreate_LostFocus" Grid.Column="2" HorizontalAlignment="Left" Height="71" Margin="382.8,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" IsTabStop="False" GotFocus="tbxImageLinkCreate_GotFocus"/>
+                    <Button x:Name="btnAdd" Content="Add" Grid.Column="2" HorizontalAlignment="Left" Margin="221.8,360,0,0" VerticalAlignment="Top" Width="75" Click="btnAdd_Click" RenderTransformOrigin="0.499,0.51"/>
+                    <Button x:Name="btnClearCreate" Content="Clear" Grid.Column="2" HorizontalAlignment="Left" Margin="326.8,360,0,0" VerticalAlignment="Top" Width="75" Click="btnClearCreate_Click" RenderTransformOrigin="0.499,0.51"/>
                 </Grid>
             </TabItem>
 
