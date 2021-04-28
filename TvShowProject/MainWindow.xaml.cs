@@ -20,6 +20,7 @@ namespace TvShowProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        ShowData db = new ShowData();
         List<Show> allShows = new List<Show>();
         public MainWindow()
         {
@@ -28,19 +29,11 @@ namespace TvShowProject
 
         private void winTvShows_Loaded(object sender, RoutedEventArgs e)
         {
-            Show s1 = new Show() { Title = "Breaking Bad", Seasons = 5, Episodes = 62, YearStart = 2008, YearEnd = 2013, Description = "Breaking bad sees Chemistry teacher Walter White and drop out student Jesse Pinkman team up making meth. Not everything goes to plan.", ShowImage = "https://upload.wikimedia.org/wikipedia/en/6/61/Breaking_Bad_title_card.png" };
-            Show s2 = new Show() { Title = "Rick and Morty", Seasons = 4, Episodes = 41, YearStart = 2013, YearEnd = 2021, Description = "Animated adventures of mad scientist Rick Sanchez and schoolboy Morty Smith", ShowImage = "https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg" };
-            Show s3 = new Show() { Title = "The Office", Seasons = 9, Episodes = 201, YearStart = 2005, YearEnd = 2013, Description = "Mockumentary of a normal day to day in an paper company" };
-            Show s4 = new Show() { Title = "Paradise PD", Seasons = 3, Episodes = 18, YearStart = 2018, YearEnd = 2021, Description = "Animated ventures of local police team" };
-            Show s5 = new Show() { Title = "Aunty Donnas Big Ol House Of Fun", Seasons = 1, Episodes = 6, YearStart = 2020, YearEnd = 2021, Description = "Morning Brown" };
-            
-            //add to collection
-            allShows.Add(s1);
-            allShows.Add(s2);
-            allShows.Add(s3);
-            allShows.Add(s4);
-            allShows.Add(s5);
+            var query = from shows in db.Shows
+                        select shows;
 
+            allShows = query.ToList();
+                      
             //sort shows
             allShows.Sort();
 
