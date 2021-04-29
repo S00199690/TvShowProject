@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 
 namespace TvShowProject
@@ -14,6 +15,7 @@ namespace TvShowProject
         int number;
         ShowData db = new ShowData();
         List<Show> allShows = new List<Show>();
+        ObservableCollection<Show> filteredShows = new ObservableCollection<Show>();
         public MainWindow()
         {
             InitializeComponent();
@@ -45,10 +47,11 @@ namespace TvShowProject
                 tbxTitle.Text = selectedShow.Title;
                 tbxSeasons.Text = selectedShow.Seasons.ToString();
                 tbxEpisodes.Text = selectedShow.Episodes.ToString();
-                tbxYearStart.Text = selectedShow.YearStart.ToString();
-                tbxYearEnd.Text = selectedShow.YearEnd.ToString();
+                tbxYearStart.Text = selectedShow.YearStart.ToString(); 
                 tbxDescription.Text = selectedShow.Description;
-                
+                tbxGenre.Text = selectedShow.Genre;
+
+
             }
         }
 
@@ -58,8 +61,8 @@ namespace TvShowProject
             tbxSeasons.Clear();
             tbxEpisodes.Clear();
             tbxYearStart.Clear();
-            tbxYearEnd.Clear();
             tbxDescription.Clear();
+            tbxGenre.Clear();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -89,7 +92,7 @@ namespace TvShowProject
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             
-            Show addShow = new Show(tbxTitleCreate.Text, int.Parse(tbxSeasonsCreate.Text), int.Parse(tbxEpisodesCreate.Text), int.Parse(tbxYearStartCreate.Text), int.Parse(tbxYearEndCreate.Text), tbxDescriptionCreate.Text, tbxImageLinkCreate.Text);
+            Show addShow = new Show(tbxTitleCreate.Text, int.Parse(tbxSeasonsCreate.Text), int.Parse(tbxEpisodesCreate.Text), int.Parse(tbxYearStartCreate.Text), tbxDescriptionCreate.Text, tbxImageLinkCreate.Text, cbxGenreCreate.Text.ToString());
             db.Shows.Add(addShow);
 
             db.SaveChanges();
@@ -116,9 +119,9 @@ namespace TvShowProject
             tbxSeasonsCreate.Clear();
             tbxEpisodesCreate.Clear();
             tbxYearStartCreate.Clear();
-            tbxYearEndCreate.Clear();
             tbxDescriptionCreate.Clear();
             tbxImageLinkCreate.Clear();
+            cbxGenreCreate.SelectedIndex = 0;
         }
 
         private void tbxTitleCreate_LostFocus(object sender, RoutedEventArgs e)
@@ -230,29 +233,6 @@ namespace TvShowProject
             {
                 MessageBox.Show("Not a Valid Number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 tbxYearStartCreate.Text = "Enter Year Started";
-
-            }
-        }
-
-        private void tbxYearEndCreate_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (tbxYearEndCreate.Text == "Enter Year Ended")
-            {
-                tbxYearEndCreate.Text = "";
-            }
-            else { }
-        }
-
-        private void tbxYearEndCreate_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (tbxYearEndCreate.Text == "")
-            {
-                tbxYearEndCreate.Text = "Enter Year Ended";
-            }
-            else if (!int.TryParse(tbxYearEndCreate.Text, out number))
-            {
-                MessageBox.Show("Not a Valid Number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                tbxYearEndCreate.Text = "Enter Year Ended";
 
             }
         }

@@ -19,8 +19,6 @@ namespace TvShowProject
 
         public int YearStart { get; set; }
 
-        public int? YearEnd { get; set; }
-
         public string Description { get; set; }
 
         public string ShowImage { get; set; }
@@ -28,15 +26,15 @@ namespace TvShowProject
         public string Genre { get; set; }
 
         //constructors
-        public Show(string title, int seasons, int episodes, int yearStart, int? yearEnd, string description, string showImage)
+        public Show(string title, int seasons, int episodes, int yearStart, string description, string showImage, string genre)
         {
             Title = title;
             Seasons = seasons;
             Episodes = episodes;
             YearStart = yearStart;
-            YearEnd = yearEnd;
             Description = description;
             ShowImage = showImage;
+            Genre = genre;
             
         }
 

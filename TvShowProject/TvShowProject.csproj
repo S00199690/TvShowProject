@@ -65,6 +65,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\202104281012366_InitialCreate.cs" />
+    <Compile Include="Migrations\202104281012366_InitialCreate.designer.cs">
+      <DependentUpon>202104281012366_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104291718471_RemoveYearEnd.cs" />
+    <Compile Include="Migrations\202104291718471_RemoveYearEnd.designer.cs">
+      <DependentUpon>202104291718471_RemoveYearEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Show.cs" />
     <Compile Include="ShowData.cs" />
     <Page Include="MainWindow.xaml">
@@ -94,6 +103,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202104281012366_InitialCreate.resx">
+      <DependentUpon>202104281012366_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104291718471_RemoveYearEnd.resx">
+      <DependentUpon>202104291718471_RemoveYearEnd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
