@@ -22,6 +22,20 @@
             </StackPanel>
 
         </DataTemplate>
+        <DataTemplate x:Key="listboxGalleryTemplate">
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+
+                <Image Source="{Binding ShowImage}" Width="500" Height="340"/>
+
+                <StackPanel>
+                    <TextBlock Text="{Binding Title}" Margin="5" FontSize="12"/>
+                </StackPanel>
+
+
+            </StackPanel>
+
+        </DataTemplate>
     </Window.Resources>
     <Grid Margin="0,0,-6.4,-2">
         <TabControl TabStripPlacement="Top">
@@ -82,6 +96,27 @@
                 </Grid>
             </TabItem>
 
+            <TabItem Header="Gallery" Width="200">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="190*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="lbxGallery" HorizontalAlignment="Left" Height="349" Margin="39,48,0,0" VerticalAlignment="Top" Width="737" Grid.ColumnSpan="3" ItemTemplate="{StaticResource listboxGalleryTemplate}" />
+                    <Button x:Name="btnRefresh" Content="Refresh" Grid.Column="2" HorizontalAlignment="Left" Margin="266,17,0,0" VerticalAlignment="Top" Width="75" Click="btnRefresh_Click" RenderTransformOrigin="0.499,0.51"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="About" Width="200">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="190*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

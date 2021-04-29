@@ -32,6 +32,8 @@ namespace TvShowProject
 
             lbxShows.ItemsSource = allShows;
 
+            lbxGallery.ItemsSource = allShows;
+
         }
 
         private void lbxShows_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -86,6 +88,7 @@ namespace TvShowProject
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            
             Show addShow = new Show(tbxTitleCreate.Text, int.Parse(tbxSeasonsCreate.Text), int.Parse(tbxEpisodesCreate.Text), int.Parse(tbxYearStartCreate.Text), int.Parse(tbxYearEndCreate.Text), tbxDescriptionCreate.Text, tbxImageLinkCreate.Text);
             db.Shows.Add(addShow);
 
@@ -246,7 +249,7 @@ namespace TvShowProject
             {
                 tbxYearEndCreate.Text = "Enter Year Ended";
             }
-            else if (int.TryParse(tbxYearEndCreate.Text, out number))
+            else if (!int.TryParse(tbxYearEndCreate.Text, out number))
             {
                 MessageBox.Show("Not a Valid Number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 tbxYearEndCreate.Text = "Enter Year Ended";
@@ -274,6 +277,13 @@ namespace TvShowProject
             
         }
 
-       
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            allShows.Sort();
+
+            lbxGallery.ItemsSource = null;
+
+            lbxGallery.ItemsSource = allShows;
+        }
     }
 }
