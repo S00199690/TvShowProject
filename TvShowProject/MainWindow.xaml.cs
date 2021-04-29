@@ -15,7 +15,7 @@ namespace TvShowProject
         int number;
         ShowData db = new ShowData();
         List<Show> allShows = new List<Show>();
-        ObservableCollection<Show> filteredShows = new ObservableCollection<Show>();
+        List<Show> filteredShows = new List<Show>();
         public MainWindow()
         {
             InitializeComponent();
@@ -42,12 +42,12 @@ namespace TvShowProject
         {
             Show selectedShow = lbxShows.SelectedItem as Show;
 
-            if(selectedShow != null)
+            if (selectedShow != null)
             {
                 tbxTitle.Text = selectedShow.Title;
                 tbxSeasons.Text = selectedShow.Seasons.ToString();
                 tbxEpisodes.Text = selectedShow.Episodes.ToString();
-                tbxYearStart.Text = selectedShow.YearStart.ToString(); 
+                tbxYearStart.Text = selectedShow.YearStart.ToString();
                 tbxDescription.Text = selectedShow.Description;
                 tbxGenre.Text = selectedShow.Genre;
 
@@ -57,12 +57,12 @@ namespace TvShowProject
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            tbxTitle.Clear();
-            tbxSeasons.Clear();
-            tbxEpisodes.Clear();
-            tbxYearStart.Clear();
-            tbxDescription.Clear();
-            tbxGenre.Clear();
+            tbxTitle?.Clear();
+            tbxSeasons?.Clear();
+            tbxEpisodes?.Clear();
+            tbxYearStart?.Clear();
+            tbxDescription?.Clear();
+            tbxGenre?.Clear();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -107,10 +107,12 @@ namespace TvShowProject
             //sort shows
             allShows.Sort();
 
-            lbxShows.ItemsSource = allShows;   
+            lbxShows.ItemsSource = allShows;
+
+            cbxGenre.SelectedIndex = 0;
 
             MessageBox.Show("Show added to list", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
-
+            
         }
 
         private void btnClearCreate_Click(object sender, RoutedEventArgs e)
@@ -264,6 +266,99 @@ namespace TvShowProject
             lbxGallery.ItemsSource = null;
 
             lbxGallery.ItemsSource = allShows;
+        }
+
+        private void cbxGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (cbxGenre.SelectedIndex)
+            {
+                case 0:
+                    var queryAll = from shows in db.Shows
+                                select shows;
+                    btnClear_Click(null, null);
+                    filteredShows = queryAll.ToList();
+                    filteredShows.Sort();
+                    lbxShows.ItemsSource = null;
+                    lbxShows.ItemsSource = filteredShows;
+                    break;
+                    
+
+                case 1:
+                    var queryComedy = from shows in db.Shows
+                                where shows.Genre.Contains("Comedy")
+                                select shows;
+                    btnClear_Click(null, null);
+                    filteredShows = queryComedy.ToList();
+                    filteredShows.Sort();
+                    lbxShows.ItemsSource = null;
+                    lbxShows.ItemsSource = filteredShows;
+                    break;
+
+                case 2:
+                    var queryAction = from shows in db.Shows
+                                where shows.Genre.Contains("Action")
+                                select shows;
+                    btnClear_Click(null, null);
+                    filteredShows = queryAction.ToList();
+                    filteredShows.Sort();
+                    lbxShows.ItemsSource = null;
+                    lbxShows.ItemsSource = filteredShows;
+                    break;
+
+                case 3:
+                    var queryHorror = from shows in db.Shows
+                                      where shows.Genre.Contains("Horror")
+                                      select shows;
+                    btnClear_Click(null, null);
+                    filteredShows = queryHorror.ToList();
+                    filteredShows.Sort();
+                    lbxShows.ItemsSource = null;
+                    lbxShows.ItemsSource = filteredShows;
+                    break;
+
+                case 4:
+                    var queryThriller = from shows in db.Shows
+                                      where shows.Genre.Contains("Thriller")
+                                      select shows;
+                    btnClear_Click(null, null);
+                    filteredShows = queryThriller.ToList();
+                    filteredShows.Sort();
+                    lbxShows.ItemsSource = null;
+                    lbxShows.ItemsSource = filteredShows;
+                    break;
+
+                case 5:
+                    var queryFantasy = from shows in db.Shows
+                                      where shows.Genre.Contains("Fantasy")
+                                      select shows;
+                    btnClear_Click(null, null);
+                    filteredShows = queryFantasy.ToList();
+                    filteredShows.Sort();
+                    lbxShows.ItemsSource = null;
+                    lbxShows.ItemsSource = filteredShows;
+                    break;
+
+                case 6:
+                    var queryAnimated = from shows in db.Shows
+                                      where shows.Genre.Contains("Animated")
+                                      select shows;
+                    btnClear_Click(null, null);
+                    filteredShows = queryAnimated.ToList();
+                    filteredShows.Sort();
+                    lbxShows.ItemsSource = null;
+                    lbxShows.ItemsSource = filteredShows;
+                    break;
+
+                default:
+                    break;
+
+            }
+
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Uri.AbsoluteUri);
         }
     }
 }
