@@ -9,12 +9,14 @@ namespace TvShowProject
 {
     public class ShowData: DbContext
     {
-        public ShowData() : base("MyShowData")//name of database
+        //name of database
+        public ShowData() : base("MyShowData")
         {
 
         }
 
-        public DbSet<Show> Shows { get; set; } //creates Show Table
+        //creates Show Table
+        public DbSet<Show> Shows { get; set; } 
 
     }
 }

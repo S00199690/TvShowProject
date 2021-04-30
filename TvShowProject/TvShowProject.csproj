@@ -76,6 +76,10 @@
     <Compile Include="Migrations\202104291718471_RemoveYearEnd.designer.cs">
       <DependentUpon>202104291718471_RemoveYearEnd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104300317041_IntNotNullSet.cs" />
+    <Compile Include="Migrations\202104300317041_IntNotNullSet.designer.cs">
+      <DependentUpon>202104300317041_IntNotNullSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Show.cs" />
     <Compile Include="ShowData.cs" />
@@ -111,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104291718471_RemoveYearEnd.resx">
       <DependentUpon>202104291718471_RemoveYearEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104300317041_IntNotNullSet.resx">
+      <DependentUpon>202104300317041_IntNotNullSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

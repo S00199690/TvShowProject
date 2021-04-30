@@ -3,7 +3,12 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
-
+using Newtonsoft.Json;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using System.Windows.Media;
+using System.Windows.Input;
+using System;
 
 namespace TvShowProject
 {
@@ -36,6 +41,7 @@ namespace TvShowProject
 
             lbxGallery.ItemsSource = allShows;
 
+            
         }
 
         private void lbxShows_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -81,6 +87,9 @@ namespace TvShowProject
                 lbxShows.ItemsSource = null;
                 lbxShows.ItemsSource = allShows;
 
+                lbxGallery.ItemsSource = null;
+                lbxGallery.ItemsSource = allShows;
+
                 MessageBox.Show("Show deleted", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
@@ -89,40 +98,82 @@ namespace TvShowProject
 
 
         }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            Show selectedShow = lbxShows.SelectedItem as Show;
+
+            if (MessageBox.Show($"Are you sure you want to make changes to this show?", "Update", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                selectedShow.Title = tbxTitle.Text;
+                selectedShow.Seasons = int.Parse(tbxSeasons.Text);
+                selectedShow.Episodes = int.Parse(tbxEpisodes.Text);
+                selectedShow.YearStart = int.Parse(tbxYearStart.Text);
+                selectedShow.Description = tbxDescription.Text;
+                selectedShow.Genre = tbxGenre.Text;
+
+                db.SaveChanges();
+
+                var query = from shows in db.Shows
+                            select shows;
+
+                allShows = query.ToList();
+
+                allShows.Sort();
+
+                lbxShows.ItemsSource = allShows;
+
+                lbxGallery.ItemsSource = null;
+
+                lbxGallery.ItemsSource = allShows;
+
+                MessageBox.Show("Changes to Show have been saved", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else { }
+        }
+
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             
-            Show addShow = new Show(tbxTitleCreate.Text, int.Parse(tbxSeasonsCreate.Text), int.Parse(tbxEpisodesCreate.Text), int.Parse(tbxYearStartCreate.Text), tbxDescriptionCreate.Text, tbxImageLinkCreate.Text, cbxGenreCreate.Text.ToString());
-            db.Shows.Add(addShow);
+                Show addShow = new Show(tbxTitleCreate.Text, int.Parse(tbxSeasonsCreate.Text), int.Parse(tbxEpisodesCreate.Text), int.Parse(tbxYearStartCreate.Text), tbxDescriptionCreate.Text, tbxImageLinkCreate.Text, cbxGenreCreate.Text.ToString());
+                db.Shows.Add(addShow);
 
-            db.SaveChanges();
+                db.SaveChanges();
 
-            btnClearCreate_Click(null, null);
+                btnClearCreate_Click(null, null);
 
-            var query = from shows in db.Shows
-                        select shows;
+                var query = from shows in db.Shows
+                            select shows;
 
-            allShows = query.ToList();
+                allShows = query.ToList();
 
-            //sort shows
-            allShows.Sort();
+                //sort shows
+                allShows.Sort();
 
-            lbxShows.ItemsSource = allShows;
+                lbxShows.ItemsSource = allShows;
 
-            cbxGenre.SelectedIndex = 0;
+                cbxGenre.SelectedIndex = 0;
 
-            MessageBox.Show("Show added to list", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
-            
+                lbxGallery.ItemsSource = null;
+
+                lbxGallery.ItemsSource = allShows;
+
+                MessageBox.Show("Show added to list", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                tbxSeasonsCreate.Text = "0";
+                tbxEpisodesCreate.Text = "0";
+                tbxYearStartCreate.Text = "2021";
+
         }
 
         private void btnClearCreate_Click(object sender, RoutedEventArgs e)
         {
             tbxTitleCreate.Clear();
-            tbxSeasonsCreate.Clear();
-            tbxEpisodesCreate.Clear();
-            tbxYearStartCreate.Clear();
             tbxDescriptionCreate.Clear();
             tbxImageLinkCreate.Clear();
+            tbxYearStartCreate.Text = "2021";
+            tbxSeasonsCreate.Text = "0";
+            tbxEpisodesCreate.Text = "0";
             cbxGenreCreate.SelectedIndex = 0;
         }
 
@@ -168,11 +219,12 @@ namespace TvShowProject
                 tbxImageLinkCreate.Text = "";
             }
             else { }
+            
         }
 
         private void tbxSeasonsCreate_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (tbxSeasonsCreate.Text == "Enter Number Of Seasons")
+            if (tbxSeasonsCreate.Text == "0")
             {
                 tbxSeasonsCreate.Text = "";
             }
@@ -183,19 +235,19 @@ namespace TvShowProject
         {
             if (tbxSeasonsCreate.Text == "")
             {
-                tbxSeasonsCreate.Text = "Enter Number Of Seasons";
+                tbxSeasonsCreate.Text = "0";
             }
             else if (!int.TryParse(tbxSeasonsCreate.Text, out number))
             {
                 MessageBox.Show("Not a Valid Number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                tbxSeasonsCreate.Text = "Enter Number Of Seasons";
+                tbxSeasonsCreate.Text = "0";
 
             }
         }
 
         private void tbxEpisodesCreate_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (tbxEpisodesCreate.Text == "Enter Number Of Episodes")
+            if (tbxEpisodesCreate.Text == "0")
             {
                 tbxEpisodesCreate.Text = "";
             }
@@ -206,19 +258,19 @@ namespace TvShowProject
         {
             if (tbxEpisodesCreate.Text == "")
             {
-                tbxEpisodesCreate.Text = "Enter Number Of Episodes";
+                tbxEpisodesCreate.Text = "0";
             }
             else if (!int.TryParse(tbxEpisodesCreate.Text, out number))
             {
                 MessageBox.Show("Not a Valid Number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                tbxEpisodesCreate.Text = "Enter Number Of Episodes";
+                tbxEpisodesCreate.Text = "0";
 
             }
         }
 
         private void tbxYearStartCreate_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (tbxYearStartCreate.Text == "Enter Year Started")
+            if (tbxYearStartCreate.Text == "2021")
             {
                 tbxYearStartCreate.Text = "";
             }
@@ -229,12 +281,13 @@ namespace TvShowProject
         {
             if (tbxYearStartCreate.Text == "")
             {
-                tbxYearStartCreate.Text = "Enter Year Started";
+                tbxYearStartCreate.Text = "2021";
+
             }
             else if (!int.TryParse(tbxYearStartCreate.Text, out number))
             {
                 MessageBox.Show("Not a Valid Number", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                tbxYearStartCreate.Text = "Enter Year Started";
+                tbxYearStartCreate.Text = "2021";
 
             }
         }
@@ -246,6 +299,8 @@ namespace TvShowProject
                 tbxDescriptionCreate.Text = "";
             }
             else { }
+
+            
         }
 
         private void tbxDescriptionCreate_LostFocus(object sender, RoutedEventArgs e)
@@ -257,15 +312,6 @@ namespace TvShowProject
             else { }
 
             
-        }
-
-        private void btnRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            allShows.Sort();
-
-            lbxGallery.ItemsSource = null;
-
-            lbxGallery.ItemsSource = allShows;
         }
 
         private void cbxGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -360,5 +406,36 @@ namespace TvShowProject
         {
             System.Diagnostics.Process.Start(e.Uri.AbsoluteUri);
         }
+
+        private void btnLike_Click(object sender, RoutedEventArgs e)
+        {
+            if(lbxShows.SelectedItem != null)
+            {
+                string data = JsonConvert.SerializeObject(lbxShows.SelectedItem, Formatting.Indented);
+
+                using (StreamWriter sw = new StreamWriter("like.json"))
+                {
+                    sw.Write(data);
+
+                    sw.Close();
+                }
+
+                MessageBox.Show("Selected Show is now your Liked Show", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+
+        }
+
+        private void btnLikedShow_Click(object sender, RoutedEventArgs e)
+        {
+            using (StreamReader file = File.OpenText("like.json"))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JObject token = (JObject)JToken.ReadFrom(reader);
+
+                tblkLikedShow.Text = token.SelectToken("Title").ToString();
+            }
+        }
+
     }
 }

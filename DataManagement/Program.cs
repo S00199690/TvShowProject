@@ -11,6 +11,7 @@ namespace DataManagement
     {
         static void Main(string[] args)
         {
+            //create database instance
             ShowData db = new ShowData();
 
             using (db)

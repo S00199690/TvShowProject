@@ -38,6 +38,16 @@ namespace TvShowProject
             
         }
 
+        public Show(string title, int seasons, int episodes, int yearStart, string description, string genre)
+        {
+            Title = title;
+            Seasons = seasons;
+            Episodes = episodes;
+            YearStart = yearStart;
+            Description = description;
+            Genre = genre;
+        }
+
         public Show()
         {
 
@@ -50,6 +60,7 @@ namespace TvShowProject
             return Title;
         }
 
+        //method to compare and sort shows
         public int CompareTo(object obj)
         {
             Show otherShow = obj as Show;
