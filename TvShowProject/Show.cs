@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -35,7 +35,7 @@ namespace TvShowProject
             Description = description;
             ShowImage = showImage;
             Genre = genre;
-            
+
         }
 
         public Show(string title, int seasons, int episodes, int yearStart, string description, string genre)
@@ -82,5 +82,5 @@ namespace TvShowProject
         }
     }
 
-   
+
 }
