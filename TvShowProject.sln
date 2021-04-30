@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TvShowProject", "TvShowProj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManagement", "DataManagement\DataManagement.csproj", "{BC95A758-5EA7-454A-8DD6-D2FF38949B03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestGenre", "UnitTestGenre\UnitTestGenre.csproj", "{6D1F38FE-273D-4005-B9C2-B39E34CD6C0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BC95A758-5EA7-454A-8DD6-D2FF38949B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC95A758-5EA7-454A-8DD6-D2FF38949B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC95A758-5EA7-454A-8DD6-D2FF38949B03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D1F38FE-273D-4005-B9C2-B39E34CD6C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D1F38FE-273D-4005-B9C2-B39E34CD6C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D1F38FE-273D-4005-B9C2-B39E34CD6C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D1F38FE-273D-4005-B9C2-B39E34CD6C0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

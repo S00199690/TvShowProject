@@ -66,6 +66,20 @@ namespace TvShowProject
             Show otherShow = obj as Show;
             return this.Title.CompareTo(otherShow.Title);
         }
+
+        //test method for unit tests
+        public string GenreCheck(string genre)
+        {
+            //checks if genre matches a genre in the database
+            if (Genre == genre)
+            {
+                return genre;
+            }
+            else
+            {
+                return "Not a Genre";
+            }
+        }
     }
 
    
